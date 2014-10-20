@@ -1,0 +1,15 @@
+<%= render 'shared/errors', obj: @todo %>
+
+<div class='well'>
+  <%= form_for @todo do |f| %>
+    <div class='control-group'>
+      <%= f.label :status %>
+      <%= f.text_field :status %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 2 %>
+    </div>
+    <%= f.submit("Create Todo" , class: 'btn btn-primary')%>
+  <% end %>
+</div>

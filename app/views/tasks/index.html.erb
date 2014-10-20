@@ -1,0 +1,39 @@
+
+<%= render 'shared/content_title', title: "Welcome to Vishwath's homework page" %>
+ 
+<%= render 'form_task' %>
+
+<hr>
+
+<% @tasks.each do |task| %>
+	<div class="row">
+	  <div class='span8 well'>
+	    <h4><%= task.heading %></h4>
+	    <p><%= task.description %> </p>
+	    <p>
+	      <small><span class='quiet'>Taught by </span> <%= task.creator.username %>
+	      at <%= task.created_at %></small>
+	    </p>
+	  </div>
+	</div>
+<% end %>
+
+<hr>
+
+<%= render 'form_todo' %>
+
+<hr>
+
+<% @todos.each do |todo| %>
+	<div class="row">
+	  <div class='span8 well'>
+	    <h4><%= todo.status %></h4>
+	    <p><%=  todo.description %> </p>
+	    <p>
+	      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
+	      at <%= todo.created_at %></small>
+	    </p>
+	  </div>
+	</div>
+<% end %>
+

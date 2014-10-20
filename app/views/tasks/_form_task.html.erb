@@ -1,0 +1,19 @@
+<%= render 'shared/errors', obj: @task %>
+
+<div class='well'>
+  <%= form_for @task do |f| %>
+    <div class='control-group'>
+      <%= f.label :heading %>
+      <%= f.text_field :heading %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :rating %>
+      <%= f.text_field :rating %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 5 %>
+    </div>
+    <%= f.submit("Today's Homework" , class: 'btn btn-primary')%>
+  <% end %>
+</div>
