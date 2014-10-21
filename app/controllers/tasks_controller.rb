@@ -2,14 +2,18 @@ class TasksController < ApplicationController
 
 	def index
 		@task = Task.new
-		@tasks = Task.all
+		@tasks = Task.all.sort.reverse
 		@todo = Todo.new
 		@todos = Todo.all
 	end
 
   def create
+ 
     @task = Task.new(task_params)
     @task.creator = User.find 1 # TODO fix this later
+    @subject = Subject.find params[:task][:subject_id].first
+    @task.subject = @subject
+    @task.save
 
     if @task.save
       flash[:notice] = "Homework saved."

@@ -1,0 +1,14 @@
+<%= render 'shared/content_title', title: 'Add a new subject'%>
+
+<%= render 'shared/errors', obj: @subject %>
+
+
+	<%= form_for @subject do |f| %>
+		<div class= 'control-group'>
+			<%= f.label :subject  %>
+			<%= f.text_field :subject %>
+			<br>
+		</div>
+		<%= f.submit 'Create Subject', class: 'btn btn-primary' %>
+	<% end %>
+</div>

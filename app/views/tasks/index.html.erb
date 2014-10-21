@@ -4,36 +4,42 @@
 <%= render 'form_task' %>
 
 <hr>
+<div class="row">
 
-<% @tasks.each do |task| %>
-	<div class="row">
-	  <div class='span8 well'>
-	    <h4><%= task.heading %></h4>
-	    <p><%= task.description %> </p>
-	    <p>
-	      <small><span class='quiet'>Taught by </span> <%= task.creator.username %>
-	      at <%= task.created_at %></small>
-	    </p>
-	  </div>
-	</div>
-<% end %>
+	<% @tasks.each do |task| %>
 
-<hr>
+			<div class="row">
+			  <div class='span7 well'>
+			    <h4><%= task.heading %></h4>
+			    <p><%= task.subject.subject %></p>
+			    <p><%= task.description %> </p>
+			    <p>
+			      <small><span class='quiet'>Taught by </span> <%= task.creator.username %>
+			      on <%= task.created_at.to_formatted_s(:long) %></small>
+			    </p>
+			  </div>
+			</div>
 
-<%= render 'form_todo' %>
+	<% end %>
 
-<hr>
 
-<% @todos.each do |todo| %>
-	<div class="row">
-	  <div class='span8 well'>
-	    <h4><%= todo.status %></h4>
-	    <p><%=  todo.description %> </p>
-	    <p>
-	      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
-	      at <%= todo.created_at %></small>
-	    </p>
-	  </div>
-	</div>
-<% end %>
+	<hr>
 
+	<%= render 'form_todo' %>
+
+	<hr>
+
+	<% @todos.each do |todo| %>
+		<div class="row">
+		  <div class='span4 well'>
+		    <h4><%= todo.status %></h4>
+		    <p><%=  todo.description %> </p>
+		    <p>
+		      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
+		      at <%= todo.created_at %></small>
+		    </p>
+		  </div>
+		</div>
+	<% end %>
+
+</div>
