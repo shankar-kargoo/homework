@@ -10,7 +10,7 @@
 
 			<div class="row">
 			  <div class='span7 well'>
-			    <h4><%= task.heading %></h4>
+			    <h4><%= task.heading %></h4> Rating: <%= task.rating %>
 			    <p><%= task.subject.subject %></p>
 			    <p><%= task.description %> </p>
 			    <p>
@@ -28,18 +28,22 @@
 	<%= render 'form_todo' %>
 
 	<hr>
+	<div class='span well'>
+		<h4>Todo List</h4>
+		<small>(click pending to move status to completed)</small>
+		
+		<% @todos.each do |todo| %>
+			<div class="row">
+			  <div class='span4 well'>
+			    <h4><%= todo.status %></h4>
 
-	<% @todos.each do |todo| %>
-		<div class="row">
-		  <div class='span4 well'>
-		    <h4><%= todo.status %></h4>
-		    <p><%=  todo.description %> </p>
-		    <p>
-		      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
-		      at <%= todo.created_at %></small>
-		    </p>
-		  </div>
-		</div>
-	<% end %>
-
+			    <p><%=  todo.description %> </p>
+			    <p>
+			      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
+			      on <%= todo.created_at %></small>
+			    </p>
+			  </div>
+			</div>
+		<% end %>
+	</div>
 </div>

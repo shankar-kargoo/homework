@@ -8,7 +8,7 @@ class SubjectsController < ApplicationController
 		@subject = Subject.new(subject_params)
 		if @subject.save
 			flash[:notice] = "New subject created"
-			redirect_to root_path
+			redirect_to tasks_path
 		else
 			@subject.errors
 			render :new

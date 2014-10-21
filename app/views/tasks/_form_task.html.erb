@@ -3,18 +3,18 @@
 <div class='span7 well'>
   <%= form_for @task do |f| %>
     <div class='control-group'>
-      <%= f.label :heading %>
+      <%= f.label :heading, "Summary of what Vishwath learnt today?" %>
       <%= f.text_field :heading %>
     </div>
     <div class='control-group'>
-      <%= f.label :rating %>
+      <b><%= f.label :rating, "How well did he do? (Rate from 1 to 5)" %></b>
       <%= f.text_field :rating %>
     </div>
     <div class='control-group'>
-      <%= f.label :description %>
+      <%= f.label :description, "Describe what he learnt, any actions items, follow ups etc."%>
       <%= f.text_area :description, rows: 5 %>
     </div>
-
+    <b>Select main subject taught today (select only one)</b>
   <div class='control-group'>
     <%= f.collection_check_boxes :subject_id, Subject.all, :id, :subject do |sb| %>
       <% sb.label(class: "checkbox inline") {sb.check_box(class: "checkbox") + sb.text} %>
@@ -22,7 +22,7 @@
   </div>
 
 
-  <%= f.submit("Today's Homework" , class: 'btn btn-primary')%>
+  <%= f.submit("Submit today's homework" , class: 'btn btn-primary')%>
 </div>
 <% end %>
 
