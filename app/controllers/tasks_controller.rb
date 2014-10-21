@@ -4,22 +4,22 @@ class TasksController < ApplicationController
 		@task = Task.new
 		@tasks = Task.all.sort.reverse
 		@todo = Todo.new
-		@todos = Todo.all
+		@todos = Todo.all.sort.reverse
 	end
 
   def create
  
     @task = Task.new(task_params)
-    @task.creator = User.find 1 # TODO fix this later
+    @task.creator = current_user
     @subject = Subject.find params[:task][:subject_id].first
     @task.subject = @subject
     @task.save
 
     if @task.save
       flash[:notice] = "Homework saved."
-      redirect_to root_path
+      redirect_to tasks_path
     else
-      render :index
+      render tasks_path
     end
   end
 

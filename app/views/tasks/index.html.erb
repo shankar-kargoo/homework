@@ -35,7 +35,22 @@
 		<% @todos.each do |todo| %>
 			<div class="row">
 			  <div class='span4 well'>
-			    <h4><%= todo.status %></h4>
+			    <h5> Status: <%= todo.status %></h5>
+
+
+			    <% if todo.status == 'Pending' %>
+					  <%= form_for @todo do |f| %>
+				    <%= f.submit("Mark as completed" , class: 'btn btn-primary')%>
+					  <% end %>
+
+					<% end %>
+
+
+
+
+
+
+
 
 			    <p><%=  todo.description %> </p>
 			    <p>
@@ -47,3 +62,8 @@
 		<% end %>
 	</div>
 </div>
+
+
+
+
+

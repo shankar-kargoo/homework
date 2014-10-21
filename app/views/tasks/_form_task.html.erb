@@ -7,8 +7,14 @@
       <%= f.text_field :heading %>
     </div>
     <div class='control-group'>
-      <b><%= f.label :rating, "How well did he do? (Rate from 1 to 5)" %></b>
-      <%= f.text_field :rating %>
+
+      <b><%= f.label :rating, "How well did he do? (5 being excellent)" %></b>
+      <%= f.radio_button(:rating, 1) %> 1
+      <%= f.radio_button(:rating, 2) %> 2 
+      <%= f.radio_button(:rating, 3) %> 3 
+      <%= f.radio_button(:rating, 4) %> 4 
+      <%= f.radio_button(:rating, 5) %> 5 
+
     </div>
     <div class='control-group'>
       <%= f.label :description, "Describe what he learnt, any actions items, follow ups etc."%>

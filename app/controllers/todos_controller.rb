@@ -2,14 +2,14 @@ class TodosController < ApplicationController
   
   def create
     @todo = Todo.new(todo_params)
-    @todo.creator = User.find 1 # TODO fix this later
-
+    @todo.creator = current_user
+    @todo.status = "Pending"
     if @todo.save
       flash[:notice] = "Task created."
-      redirect_to root_path
+      redirect_to tasks_path
     else
       flash[:error] = "Unable to create task."
-      redirect_to root_path
+      redirect_to tasks_path
     end
   end
 
