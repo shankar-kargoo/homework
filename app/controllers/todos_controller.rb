@@ -13,6 +13,13 @@ class TodosController < ApplicationController
     end
   end
 
+  def update
+    binding.pry
+    todo.status = "Completed"
+    todo.save
+    redirect_to tasks_path
+  end
+
  private
 
   def todo_params

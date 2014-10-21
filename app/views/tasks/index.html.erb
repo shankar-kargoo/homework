@@ -1,69 +1,53 @@
 
 <%= render 'shared/content_title', title: "Welcome to Vishwath's homework page" %>
+
+
  
-<%= render 'form_task' %>
+	<div class='span7 well'>
+		<%= render 'form_task' %>
 
-<hr>
-<div class="row">
-
-	<% @tasks.each do |task| %>
-
-			<div class="row">
-			  <div class='span7 well'>
-			    <h4><%= task.heading %></h4> Rating: <%= task.rating %>
-			    <p><%= task.subject.subject %></p>
-			    <p><%= task.description %> </p>
-			    <p>
-			      <small><span class='quiet'>Taught by </span> <%= task.creator.username %>
-			      on <%= task.created_at.to_formatted_s(:long) %></small>
-			    </p>
-			  </div>
-			</div>
-
-	<% end %>
-
-
-	<hr>
-
-	<%= render 'form_todo' %>
-
-	<hr>
-	<div class='span well'>
-		<h4>Todo List</h4>
-		<small>(click pending to move status to completed)</small>
-		
-		<% @todos.each do |todo| %>
-			<div class="row">
-			  <div class='span4 well'>
-			    <h5> Status: <%= todo.status %></h5>
-
-
-			    <% if todo.status == 'Pending' %>
-					  <%= form_for @todo do |f| %>
-				    <%= f.submit("Mark as completed" , class: 'btn btn-primary')%>
-					  <% end %>
-
-					<% end %>
-
-
-
-
-
-
-
-
-			    <p><%=  todo.description %> </p>
-			    <p>
-			      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
-			      on <%= todo.created_at %></small>
-			    </p>
-			  </div>
-			</div>
-		<% end %>
+		<div class="row ">
+			<% @tasks.each do |task| %>
+					  <div class='span6 well'>
+					  	<%= task.created_at.to_formatted_s(:long) %>
+					    <h4><%= task.heading %></h4> Score: <%= task.rating %>
+					    <p><%= task.subject.subject %></p>
+					    <p><%= task.description %> </p>
+					    <p><small>
+					    	<span class='quiet'>Taught by </span> <%= task.creator.username %>
+					    </small></p>
+					  </div>
+			<% end %>
+		</div>
 	</div>
+
+
+
+	<div class='span4 well'>
+		<%= render 'form_todo' %>
+
+		
+			<h4>Todo List</h4>
+			<small>(click pending to move status to completed)</small>
+			
+			<% @todos.each do |todo| %>
+				<div class='span3 well'>
+				    <h5> Status: <%= todo.status %></h5>
+
+				    <% if todo.status == 'Pending' %>
+					    [Mark as completed]
+						<% end %>
+
+				    <p><%=  todo.description %> </p>
+				    <p>
+				      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
+				      on <%= todo.created_at %></small>
+				    </p>
+				</div>
+			<% end %>	
+
+
 </div>
-
-
 
 
 
