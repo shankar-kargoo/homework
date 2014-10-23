@@ -14,9 +14,9 @@ class TodosController < ApplicationController
   end
 
   def update
-    binding.pry
-    todo.status = "Completed"
-    todo.save
+    @todo = Todo.find(params[:id])
+    @todo.status = "Completed"
+    @todo.save
     redirect_to tasks_path
   end
 

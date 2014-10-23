@@ -1,8 +1,15 @@
 
 <%= render 'shared/content_title', title: "Welcome to Vishwath's homework page" %>
 
+	<div id="datepicker"></div>
+	 
+	<script>
+	$( "#datepicker" ).datepicker();
+	</script>
+	
+	<hr>
 
- 
+ <div class="row">
 	<div class='span7 well'>
 		<%= render 'form_task' %>
 
@@ -27,27 +34,26 @@
 		<%= render 'form_todo' %>
 
 		
-			<h4>Todo List</h4>
-			<small>(click pending to move status to completed)</small>
+		<h4>Vishwath's todo list</h4>
 			
-			<% @todos.each do |todo| %>
-				<div class='span3 well'>
-				    <h5> Status: <%= todo.status %></h5>
+		<% @todos.each do |todo| %>
+			<div class='span3 well'>
+		    <h5> Status: <%= todo.status %></h5>
 
-				    <% if todo.status == 'Pending' %>
-					    [Mark as completed]
-						<% end %>
-
-				    <p><%=  todo.description %> </p>
-				    <p>
-				      <small><span class='quiet'>Assigned by </span> <%= todo.creator.username %>
-				      on <%= todo.created_at %></small>
-				    </p>
-				</div>
-			<% end %>	
+		    <% if todo.status == 'Pending' %>
+		    	<% @todo = todo %>
+					<%= form_for @todo, :method => :patch, :url => todo_path(@todo) do |f| %>
+				      <%= f.hidden_field :status %>	     
+				    <%= f.submit("Mark as Completed" , class: 'btn btn-warning')%>
+				  <% end %>
+				<% end %>
 
 
+		    <p><%=  todo.description %> </p>
+		    <p><small><span class='quiet'>Assigned by </span> <%= todo.creator.username %> on <%= todo.created_at %></small></p>
+			</div>
+		<% end %>	
+	</div>
 </div>
-
 
 

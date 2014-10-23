@@ -15,3 +15,16 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+
+$(function() {
+    $( "#slider-range-max" ).slider({
+      range: "max",
+      min: 1,
+      max: 5,
+      value: 2,
+      slide: function( event, ui ) {
+        $( "#rating" ).val( ui.value );
+      }
+    });
+    $( "#rating" ).val( $( "#slider-range-max" ).slider( "value" ) );
+  });
