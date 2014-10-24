@@ -1,18 +1,34 @@
 
 <%= render 'shared/content_title', title: "Welcome to Vishwath's homework page" %>
 
-	<div id="datepicker"></div>
-	 
-	<script>
-	$( "#datepicker" ).datepicker();
-	</script>
-	
+ <div class="row">
+	<div class='span6 '>
+
+		<div id="datepicker"></div> 
+	 		<div class='span'>
+				<script>
+				$( "#datepicker" ).datepicker();
+				</script>
+			</div>
+		</div>
+
+		<div class='span6 '>
+			<%= image_tag("kids-balloon.jpeg") %> 
+			<br>
+			<%= link_to ("Ms.Nguyen's Website"), "http://nguyenmaria.weebly.com/", :target => "_blank" %>
+			<br>
+			<%= link_to ("Raaz Kids"), "http://www.raz-kids.com/main/Login", :target => "_blank" %>
+			<br>
+			<%= link_to ("JiJi Maths"), "http://www.stmath.com/", :target => "_blank" %>
+		</div>
+	</div>
+
 	<hr>
 
  <div class="row">
 	<div class='span7 well'>
 		<%= render 'form_task' %>
-
+	
 		<div class="row ">
 			<% @tasks.each do |task| %>
 					  <div class='span6 well'>
@@ -29,11 +45,8 @@
 	</div>
 
 
-
 	<div class='span4 well'>
 		<%= render 'form_todo' %>
-
-		
 		<h4>Vishwath's todo list</h4>
 			
 		<% @todos.each do |todo| %>
@@ -44,7 +57,7 @@
 		    	<% @todo = todo %>
 					<%= form_for @todo, :method => :patch, :url => todo_path(@todo) do |f| %>
 				      <%= f.hidden_field :status %>	     
-				    <%= f.submit("Mark as Completed" , class: 'btn btn-warning')%>
+				    <%= f.submit("Mark as Completed" , class: 'btn btn-success')%>
 				  <% end %>
 				<% end %>
 
@@ -53,7 +66,8 @@
 		    <p><small><span class='quiet'>Assigned by </span> <%= todo.creator.username %> on <%= todo.created_at %></small></p>
 			</div>
 		<% end %>	
-	</div>
+
+</div>
 </div>
 
 

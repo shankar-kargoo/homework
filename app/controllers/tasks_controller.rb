@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 	end
 
   def create
- 
+    binding.pry
     @task = Task.new(task_params)
     @task.creator = current_user
     @subject = Subject.find params[:task][:subject_id].first
